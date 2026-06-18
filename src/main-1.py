@@ -87,19 +87,16 @@ def build_cnn():
 
     return model
 
+
 # ------------------------
-# RUN EXPERIMENT
+# MAIN
 # ------------------------
 
-def run_experiment(dataset_name):
-
-    print("\n" + "=" * 60)
-    print(f"DATASET : {dataset_name.upper()}")
-    print("=" * 60)
+if __name__ == "__main__":
 
     print("\nLoading Data...")
 
-    x_train, y_train, x_test, y_test = load_data(dataset_name)
+    x_train, y_train, x_test, y_test = load_data()
 
     # =====================
     # QNN
@@ -169,44 +166,9 @@ def run_experiment(dataset_name):
         cnn_pred
     )
 
-    return qnn_acc, cnn_acc
+    print("\n" + "=" * 40)
+    print("FINAL COMPARISON")
+    print("=" * 40)
 
-
-# ------------------------
-# MAIN
-# ------------------------
-
-if __name__ == "__main__":
-
-    mnist_qnn_acc, mnist_cnn_acc = run_experiment(
-        "mnist"
-    )
-
-    fashion_qnn_acc, fashion_cnn_acc = run_experiment(
-        "fashion"
-    )
-
-    print("\n" + "=" * 60)
-    print("FINAL DATASET COMPARISON")
-    print("=" * 60)
-
-    print("\nMNIST")
-    print(f"QNN Accuracy : {mnist_qnn_acc:.4f}")
-    print(f"CNN Accuracy : {mnist_cnn_acc:.4f}")
-
-    print("\nFASHION-MNIST")
-    print(f"QNN Accuracy : {fashion_qnn_acc:.4f}")
-    print(f"CNN Accuracy : {fashion_cnn_acc:.4f}")
-    
-with open("results/experiment_results.txt", "w") as f:
-
-    f.write("FINAL DATASET COMPARISON\n")
-    f.write("=" * 60 + "\n\n")
-
-    f.write("MNIST\n")
-    f.write(f"QNN Accuracy : {mnist_qnn_acc:.4f}\n")
-    f.write(f"CNN Accuracy : {mnist_cnn_acc:.4f}\n\n")
-
-    f.write("FASHION-MNIST\n")
-    f.write(f"QNN Accuracy : {fashion_qnn_acc:.4f}\n")
-    f.write(f"CNN Accuracy : {fashion_cnn_acc:.4f}\n")
+    print(f"QNN Accuracy : {qnn_acc:.4f}")
+    print(f"CNN Accuracy : {cnn_acc:.4f}")

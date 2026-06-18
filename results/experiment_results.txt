@@ -1,0 +1,10 @@
+FINAL DATASET COMPARISON
+============================================================
+
+MNIST
+QNN Accuracy : 0.6200
+CNN Accuracy : 1.0000
+
+FASHION-MNIST
+QNN Accuracy : 0.5000
+CNN Accuracy : 1.0000
